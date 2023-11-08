@@ -10,8 +10,6 @@ public class Robot extends TimedRobot
   //Container
   public static RobotContainer m_robotContainer;
 
-  //Subsystems
-
   //Navx
   public static AHRS m_ahrs;
 
@@ -20,6 +18,7 @@ public class Robot extends TimedRobot
   {
 
     //Subsystems
+    Wheels wheels = new Wheels();
     
     //Container
     m_robotContainer = new RobotContainer();
