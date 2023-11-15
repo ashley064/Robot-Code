@@ -1,23 +1,23 @@
 package main.java.frc.robot.commands;
 
-public class Forward extends commandBase {
+public class Backwards {
     
-    public Forward() {
+    public Backwards() {
         this.addRequirements(Robot.wheels);
     }
 
     public void execute() {
 
-        if (Robot.wheels.getWheelSwitch() == false) {
-            Robot.wheels.setLeftWheelMotorState(Wheels.LeftWheelMotorState.ON);
-            Robot.wheels.setRightwheelMotorState(Wheels.RightWheelMotorState.ON);
-        } else {
+        if (Robot.wheels.getLeftWheelMotorPosition() >= -10) {
+            Robot.wheels.setLeftWheelMotorState(Wheels.LeftWheelMotorState.REVERSED);
+            Robot.wheels.setRightWheelMotorState(Wheels.RightWheelMotorState.REVERSED);
+        }else {
             Robot.wheels.setLeftWheelMotorState(Wheels.LeftWheelMotorState.OFF);
             Robot.wheels.setRightWheelMotorState(Wheels.RightWheelMotorState.OFF);
         }
     }
 
-    public void end(boolean interrupted){
+    public oid end(boolean interrupted) {
         Robot.wheels.setLeftWheelMotorState(Wheels.LeftWheelMotorState.OFF);
         Robot.wheels.setRightWheelMotorState(Wheels.RightWheelMotorState.OFF);
     }

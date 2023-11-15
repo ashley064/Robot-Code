@@ -7,6 +7,8 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 public class Robot extends TimedRobot 
 {
   
+  public static Wheels wheels;
+
   //Container
   public static RobotContainer m_robotContainer;
 
@@ -18,7 +20,7 @@ public class Robot extends TimedRobot
   {
 
     //Subsystems
-    Wheels wheels = new Wheels();
+    wheels = new Wheels();
     
     //Container
     m_robotContainer = new RobotContainer();

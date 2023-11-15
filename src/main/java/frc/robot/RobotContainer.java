@@ -7,6 +7,10 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public class RobotContainer  
 {
 
+  public Command Forward;
+  public Command Backwards;
+
+
     // Driver Controller
     public Joystick joy = new Joystick(0);
     public JoystickButton a_button = new JoystickButton(joy, 1);
@@ -27,6 +31,8 @@ public class RobotContainer
 
     public RobotContainer() 
     {
+      forward = new Forward();
+      backward = new Backwards();
 
       configureButtonBindings();
       
@@ -34,6 +40,18 @@ public class RobotContainer
 
     private void configureButtonBindings() 
     {
+      this.y_button.onTrue(forward);
+      this.y_button.onFalse(new InstantCommand() {
+        public void initialize() {
+          forward.cancel();
+        }
+      });
 
+      this.a_button.onTrue(backward);
+      this.a_button.onFalse(new InstantCommand() {
+        public void initialize() {
+          backward.cancel();
+        }
+      });
     }
 }
